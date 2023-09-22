@@ -10,7 +10,7 @@ public class App
 {
     public static void main( String[] args )
     {
-        Scanner sc= new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         String product;//nombre del producto
         short purchaseQuantity;// cantidad ordenada / dia , mes
         int inventoryNumber;//numero de inventario
@@ -29,5 +29,8 @@ public class App
         //Uso de las variables en impresion
         System.out.println("producto | cantidad | codigo de registro | cantidad en inventario| precio");
         System.out.println(product + " | " + purchaseQuantity + " | " + inventoryNumber + " | " + invetoryQuantity + " | " + productPrice);
+        if(sc!=null){
+            sc.close();
+        }
     }
 }
