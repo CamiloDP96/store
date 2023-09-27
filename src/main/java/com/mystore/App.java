@@ -1,6 +1,8 @@
 package com.mystore;
 
 import java.util.Scanner;
+import com.mystore.Utilities.products;
+
 
 /**
  * Hello world!
@@ -49,13 +51,13 @@ public class App
             choise = sc.nextInt();
             switch (choise) {
                 case 1:
-                    addProduct();
+                    products.addProduct();;
                     break;
                 case 2:
-                    removeProduct();
+                    products.removeProduct();
                     break;
                 case 3:
-                    updateProduct();
+                    products.updateProduct();
                     break;
                 case 4:
                     deleteProduct();
@@ -74,10 +76,6 @@ public class App
             return x;
         }
 
-        static void addProduct(){
-            System.out.println("add Product");
-            return;
-        }
         static void removeProduct(){
             System.out.println("remove product");
             return;
@@ -96,7 +94,6 @@ public class App
             int inventoryNumber;//numero de inventario
             int invetoryQuantity;//cantidad en inventario
             double productPrice;//precio de producto
-
             //Creacion de objeto
             product = "catfood";
             System.out.println("Por favor ingrese la cantidad ordenada:");
@@ -111,5 +108,4 @@ public class App
         static void killProgram(){
             System.out.println("exit");
         }
-}
-
+    }
