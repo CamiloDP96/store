@@ -10,13 +10,16 @@ public class App
 {
     public static void main( String[] args )
     {
+        int x = 0;
         Scanner sc = new Scanner(System.in);
-        displayMenu(sc);
+        do {
+            displayMenu(sc, x);
+        } while (x == 6);
         if(sc!=null){
             sc.close();
             }
         }
-        public static void displayMenu(Scanner sc){
+        public static int displayMenu(Scanner sc, int x){
             int choise;
             System.out.println(
             """
@@ -67,6 +70,8 @@ public class App
                     System.out.println("opcion no valida. por favor intente de nuevo");
                     break;
             }
+            x = choise;
+            return x;
         }
 
         static void addProduct(){
