@@ -3,6 +3,7 @@ package com.mystore;
 import java.util.Scanner;
 import com.mystore.Utilities.products;
 import com.mystore.Utilities.calculations;
+import com.mystore.Utilities.objects;
 
 
 /**
@@ -56,7 +57,7 @@ public class App
             choise = sc.nextInt();
             switch (choise) {
                 case 1:
-                    products.addProduct(sc);;
+                    products.addProduct(sc);
                     break;
                 case 2:
                     products.removeProduct();

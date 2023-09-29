@@ -1,5 +1,7 @@
 package com.mystore.Utilities;
-import java.io.*;
+import java.util.LinkedList;
+import java.util.List;
+/*import java.io.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -11,19 +13,22 @@ import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.List;
-import java.util.Scanner;
 import java.util.ArrayList;
-import com.mystore.Utilities.objects;
+import com.mystore.Utilities.objects;*/
+import java.util.Scanner;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 
 
 public class products {
-    public static void addProduct(Scanner sc, List<objects> objectsList) {
-        //agregar objeto a BD
+    public static void addProduct(Scanner sc /*List<objects> objectsList */) {
+        /*//agregar objeto a BD
         String newProduct;//nombre del nuevo producto
         int newInventoryNumber;//numernewI de inventario
         int newInvetoryQuantity;//cantidanewI en inventario
         double newProductPrice;//precio de nuevo producto
-        String path = "C:\\Users\\cadp9\\Documents\\GitHub\\store\\src\\main\\java\\com\\mystore\\Utilities";
+        //String path = "C:\\Users\\cadp9\\Documents\\GitHub\\store\\src\\main\\java\\com\\mystore\\Utilities";
 
         System.out.println("ingrese el nombre del nuevo producto");
         newProduct = sc.next();
@@ -41,6 +46,35 @@ public class products {
             }
         } catch (IOException e) {
             e.printStackTrace(); // Handle the exception properly
+        }
+        System.out.println(newProduct + "|" + newInventoryNumber + "|" + newInvetoryQuantity + "|" + newProductPrice);*/
+        List<String> producto = new LinkedList<>();
+
+        producto.add("galletas");
+        producto.add("pastel");
+        producto.add("helados");
+        producto.add("papas");
+        producto.add("cocacola");
+        producto.add("leche");
+        producto.add("huevosX20u");
+        producto.add("avena");
+        producto.add("cereal");
+        producto.add("chocolate");
+        producto.add("mani");
+        producto.add("mermelada");
+        producto.add("cafe");
+        producto.add("sal");
+        producto.add("gomitas");
+        producto.add("jet");
+        producto.add("pan");
+        producto.add("salsa tomate");
+        producto.add("suntea");
+        producto.add("cerveza");
+        producto.add("ron");
+
+        Collections.sort(producto);
+        for (String product : producto) {
+            System.out.println(product);
         }
         return;
     }
