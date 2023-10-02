@@ -1,7 +1,7 @@
 package com.mystore.Utilities;
 import java.util.LinkedList;
 import java.util.List;
-/*import java.io.*;
+import java.io.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -14,16 +14,15 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.List;
 import java.util.ArrayList;
-import com.mystore.Utilities.objects;*/
+import com.mystore.Utilities.objects;
 import java.util.Scanner;
 import java.util.Collections;
 import java.util.LinkedList;
-import java.util.List;
 
 
 public class products {
     public static void addProduct(Scanner sc /*List<objects> objectsList */) {
-        /*//agregar objeto a BD
+        //agregar objeto a BD
         String newProduct;//nombre del nuevo producto
         int newInventoryNumber;//numernewI de inventario
         int newInvetoryQuantity;//cantidanewI en inventario
@@ -47,8 +46,8 @@ public class products {
         } catch (IOException e) {
             e.printStackTrace(); // Handle the exception properly
         }
-        System.out.println(newProduct + "|" + newInventoryNumber + "|" + newInvetoryQuantity + "|" + newProductPrice);*/
-        List<String> producto = new LinkedList<>();
+        System.out.println(newProduct + "|" + newInventoryNumber + "|" + newInvetoryQuantity + "|" + newProductPrice);
+        /*List<String> producto = new LinkedList<>();
 
         producto.add("galletas");
         producto.add("pastel");
@@ -75,7 +74,7 @@ public class products {
         Collections.sort(producto);
         for (String product : producto) {
             System.out.println(product);
-        }
+        }*/
         return;
     }
 
