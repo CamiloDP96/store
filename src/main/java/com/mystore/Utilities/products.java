@@ -2,32 +2,20 @@ package com.mystore.Utilities;
 import java.util.LinkedList;
 import java.util.List;
 import java.io.*;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
-import java.io.PrintWriter;
-import java.util.List;
 import java.util.ArrayList;
 import com.mystore.Utilities.objects;
 import java.util.Scanner;
 import java.util.Collections;
-import java.util.LinkedList;
 
 
 public class products {
-    public static void addProduct(Scanner sc /*List<objects> objectsList */) {
+    public static List<objects> addProduct(Scanner sc) {
         //agregar objeto a BD
+        String path = "C:\\Users\\cadp9\\Documents\\GitHub\\store\\src\\main\\java\\com\\mystore\\Utilities\\inventory.txt";
         String newProduct;//nombre del nuevo producto
         int newInventoryNumber;//numernewI de inventario
         int newInvetoryQuantity;//cantidanewI en inventario
         double newProductPrice;//precio de nuevo producto
-        //String path = "C:\\Users\\cadp9\\Documents\\GitHub\\store\\src\\main\\java\\com\\mystore\\Utilities";
 
         System.out.println("ingrese el nombre del nuevo producto");
         newProduct = sc.next();
@@ -37,48 +25,21 @@ public class products {
         newInvetoryQuantity = sc.nextInt();
         System.out.println("ingrese el precio de venta del nuevo producto");
         newProductPrice = sc.nextInt();
-        //List<objects> objectsList = new ArrayList<>();
+        List<objects> productsList = new ArrayList<>();
+        productsList.add(new objects(newProduct, newInventoryNumber, newInvetoryQuantity, newProductPrice));
 
-        try (PrintWriter writer = new PrintWriter(new FileWriter(path))) {
-            for (objects objectsList : products) {
-                writer.println(products);
-            }
+        try(FileWriter fw = new FileWriter(path, true);
+        BufferedWriter bw = new BufferedWriter(fw);
+        PrintWriter out = new PrintWriter(bw))
+        {
+            out.println(productsList);
         } catch (IOException e) {
-            e.printStackTrace(); // Handle the exception properly
+        //exception handling left as an exercise for the reader newProduct + " " + newInventoryNumber + " " + newInvetoryQuantity + " " + newProductPrice
         }
-        System.out.println(newProduct + "|" + newInventoryNumber + "|" + newInvetoryQuantity + "|" + newProductPrice);
-        /*List<String> producto = new LinkedList<>();
-
-        producto.add("galletas");
-        producto.add("pastel");
-        producto.add("helados");
-        producto.add("papas");
-        producto.add("cocacola");
-        producto.add("leche");
-        producto.add("huevosX20u");
-        producto.add("avena");
-        producto.add("cereal");
-        producto.add("chocolate");
-        producto.add("mani");
-        producto.add("mermelada");
-        producto.add("cafe");
-        producto.add("sal");
-        producto.add("gomitas");
-        producto.add("jet");
-        producto.add("pan");
-        producto.add("salsa tomate");
-        producto.add("suntea");
-        producto.add("cerveza");
-        producto.add("ron");
-
-        Collections.sort(producto);
-        for (String product : producto) {
-            System.out.println(product);
-        }*/
-        return;
+        return productsList;
     }
 
-    public static void removeProduct(){
+    public static void removeProduct(){ //no completado
         //remover objeto a BD
         System.out.println("add Product");
         String product;//nombre del producto
@@ -96,7 +57,7 @@ public class products {
         System.out.println(product + " | "  + inventoryNumber + " | " + invetoryQuantity + " | " + productPrice);
         return;
     }
-    public static void updateProduct(){
+    public static void updateProduct(){ //no completado
         //actualizar objeto a BD
         System.out.println("add Product");
         String product;//nombre del producto
@@ -114,9 +75,39 @@ public class products {
         System.out.println(product + " | "  + inventoryNumber + " | " + invetoryQuantity + " | " + productPrice);
         return;
     }
-    public static void printInventory(){
-        System.out.println("inventario");
-        //print inventory
+    public static void printInventory (List<objects> productsList, Scanner sc){
+        String path = "C:\\Users\\cadp9\\Documents\\GitHub\\store\\src\\main\\java\\com\\mystore\\Utilities\\inventory.txt";
+        List<objects> objectsList = new ArrayList<>();
+
+        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(",");
+                String producString = parts[0].trim();
+                int codeNumber = Integer.parseInt(parts[1].trim());
+                int inventory = Integer.parseInt(parts[2].trim());
+                double price = Integer.parseInt(parts[3].trim());
+
+                objects objects = new objects(producString, codeNumber, inventory, price);
+                objectsList.add(objects);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Print the list of objects objects
+        for (objects objects : objectsList) {
+            System.out.println(objects);
+        }
+
+        System.out.println("por favor ingrese el id del producto a visualizar");
+
+        int inventoryNumberSearched = sc.nextInt();
+        for (objects objects : productsList) {
+            if(objects.getInventoryNumber() == inventoryNumberSearched){
+                System.out.println("Producto{" + objects.getProduct() + ", codigo " + objects.getInventoryNumber() + ", cantidad en inventario" + objects.getInventoryQuantity() + ", precio " + objects.getProductPrice() + "}");
+            }
+        }
     }
     /*public static void createinventory(){
         objects.runList();
