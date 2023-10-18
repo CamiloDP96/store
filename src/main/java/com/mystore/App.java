@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import com.mystore.Utilities.products;
+import com.mystore.Utilities.users;
 import com.mystore.Utilities.calculations;
 import com.mystore.Utilities.objects;
 
@@ -57,6 +58,8 @@ public class App
             ⠀⠀⠀⠀⠀⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇"""
             );
         System.out.println("___________________________________________\n"+"Administrador Mi Tienda\n" + "___________________________________________\n" + "1. Agregar a inventario\n" + "2. Remover de inventario\n" + "3. actualizar producto de inventario\n" + "4. Eliminar producto de inventario\n" + "5. Ver inventario\n" + "6. Cerrar menu");
+        users user1 = new users("Administrador", "admin123");
+        System.out.println("usuario: " + user1.getUsername());
         choise = sc.nextInt();
         switch (choise) {
             case 1:

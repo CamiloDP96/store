@@ -82,11 +82,11 @@ public class products {
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
             String line;
             while ((line = br.readLine()) != null) {
-                String[] parts = line.split(",");
+                String[] parts = line.split(" ");
                 String producString = parts[0].trim();
                 int codeNumber = Integer.parseInt(parts[1].trim());
                 int inventory = Integer.parseInt(parts[2].trim());
-                double price = Integer.parseInt(parts[3].trim());
+                double price = Double.parseDouble(parts[3].trim());
 
                 objects objects = new objects(producString, codeNumber, inventory, price);
                 objectsList.add(objects);
@@ -99,8 +99,6 @@ public class products {
         for (objects objects : objectsList) {
             System.out.println(objects);
         }
-
-        System.out.println("por favor ingrese el id del producto a visualizar");
 
         int inventoryNumberSearched = sc.nextInt();
         for (objects objects : productsList) {
