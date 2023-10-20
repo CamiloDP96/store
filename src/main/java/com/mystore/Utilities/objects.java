@@ -5,6 +5,7 @@ import java.io.Serializable;
 
 public class objects implements Serializable{
 
+    // Contructor
     private static final long serialVersionUID = 1L;
     public static objects Objects;
     String product;//nombre del producto
@@ -19,10 +20,18 @@ public class objects implements Serializable{
         this.invetoryQuantity= invetoryQuantity;
         this.productPrice = productPrice;
     }
+
+    // Setter
     public int setInventoryQuantity(int purchaseQuantity){
         this.invetoryQuantity = invetoryQuantity - purchaseQuantity;
         return this.invetoryQuantity;
     }
+    public double setProductPrice(double newProductPrice){
+        this.productPrice = newProductPrice;
+        return this.productPrice;
+    }
+
+    // Getter
     public String getProduct(){
         return product;
     }

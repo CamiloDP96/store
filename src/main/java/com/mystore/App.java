@@ -5,12 +5,11 @@ import java.util.List;
 import java.util.Scanner;
 import com.mystore.Utilities.products;
 import com.mystore.Utilities.users;
-import com.mystore.Utilities.calculations;
 import com.mystore.Utilities.objects;
 
 
 /**
- * Hello world!
+ * Mi tienda de barrio!
  *
  */
 public class App
@@ -20,11 +19,20 @@ public class App
         int x = 0;
         Scanner sc = new Scanner(System.in);
         //boolean create = true;
-        do {
-            displayMenu(sc, x);
-        } while (x == 6);
-        if(sc!=null){
-            sc.close();
+        users admin = new users("admin", "admin123");
+        System.out.println("ingrese usuaio y contraseña");
+        String user1 = sc.next();
+        String userpassword = sc.next();
+        if (user1.equals(admin.getUsername()) && userpassword.equals(admin.getPassword()) ) {
+            System.out.println("login completado");
+            do {
+                displayMenu(sc, x);
+            } while (x == 6);
+            if(sc!=null){
+                sc.close();
+            }
+        } else{
+            System.out.println("usuario o contraseña incorrectos");
         }
         /*if (create == true) {
             products.createinventory();
@@ -56,11 +64,10 @@ public class App
             ⠀⠀⠑⠄⣀⠙⡭⠢⢀⡀⠀⠁⠄⣀⣀⠀⢀⣀⣀⣀⡠⠂⢃⡀⠔⠱⡞⢁⠄⣁⠔⠁⠀
             ⠀⠀⠀⠀⠀⢠⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⠉⠁⠀⠀⠀⠀
             ⠀⠀⠀⠀⠀⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇"""
-            );
-        System.out.println("___________________________________________\n"+"Administrador Mi Tienda\n" + "___________________________________________\n" + "1. Agregar a inventario\n" + "2. Remover de inventario\n" + "3. actualizar producto de inventario\n" + "4. Eliminar producto de inventario\n" + "5. Ver inventario\n" + "6. Cerrar menu");
-        users user1 = new users("Administrador", "admin123");
-        System.out.println("usuario: " + user1.getUsername());
+                );
+        System.out.println("___________________________________________\n"+"Administrador Mi Tienda\n" + "___________________________________________\n" + "1. Agregar a inventario\n" + "2. Remover de inventario\n" + "3. actualizar producto de inventario\n" + "4. Realizar compra\n" + "5. Ver inventario\n" + "6. Cerrar menu");
         choise = sc.nextInt();
+        x = choise;
         switch (choise) {
             case 1:
                 pl = products.addProduct(sc);
@@ -72,7 +79,7 @@ public class App
                 products.updateProduct();
                 break;
             case 4:
-                calculations.changeCalculations();
+                products.purchase(pl, sc);
                 break;
             case 5:
                 products.printInventory(pl, sc);
@@ -84,7 +91,6 @@ public class App
                 System.out.println("opcion no valida. por favor intente de nuevo");
                 break;
         }
-        x = choise;
         return x;
     }
 

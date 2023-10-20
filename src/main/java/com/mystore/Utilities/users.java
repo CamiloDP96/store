@@ -6,11 +6,11 @@ public class users {
 
     // Constructor
     public users(String username, String password) {
-        this.username = username;
-        this.password = password;
+        this.username = username; //usuario
+        this.password = password; //contraseña
     }
 
-    // Getter methods
+    // Getter
     public String getUsername() {
         return username;
     }
@@ -19,7 +19,7 @@ public class users {
         return password;
     }
 
-    // Setter methods (if needed)
+    // Setter
     public void setUsername(String username) {
         this.username = username;
     }
