@@ -38,38 +38,12 @@ public class products {
 
     public static void removeProduct(){ //no completado
         //remover objeto a BD
-        System.out.println("add Product");
-        String product;//nombre del producto
-        int inventoryNumber;//numero de inventario
-        int invetoryQuantity;//cantidad en inventario
-        double productPrice;//precio de producto
-        //Creacion de objeto
-        product = "catfood";
-        System.out.println("Por favor ingrese el id del producto a remover");
-        inventoryNumber=45444823;
-        invetoryQuantity = 777888;
-        productPrice = 789543.99;
-        //Uso de las variables en impresion
-        System.out.println("producto | cantidad | codigo de registro | cantidad en inventario| precio");
-        System.out.println(product + " | "  + inventoryNumber + " | " + invetoryQuantity + " | " + productPrice);
+        System.out.println("remover producto");
         return;
     }
     public static void updateProduct(){ //no completado
         //actualizar objeto a BD
-        System.out.println("add Product");
-        String product;//nombre del producto
-        int inventoryNumber;//numero de inventario
-        int invetoryQuantity;//cantidad en inventario
-        double productPrice;//precio de producto
-        //Creacion de objeto
-        product = "catfood";
-        System.out.println("Por favor ingrese el id del producto a actualizar");
-        inventoryNumber=45444823;
-        invetoryQuantity = 777888;
-        productPrice = 789543.99;
-        //Uso de las variables en impresion
-        System.out.println("producto | cantidad | codigo de registro | cantidad en inventario| precio");
-        System.out.println(product + " | "  + inventoryNumber + " | " + invetoryQuantity + " | " + productPrice);
+        System.out.println("actualizar producto");
         return;
     }
     public static void printInventory (List<objects> productsList, Scanner sc){
@@ -107,12 +81,13 @@ public class products {
     public static void purchase(List<objects> productsList, Scanner sc) {
         // Variable declaration
         String path = "C:\\Users\\cadp9\\Documents\\GitHub\\store\\src\\main\\java\\com\\mystore\\Utilities\\inventory.txt";
-        List<objects> objectsList = new ArrayList<>();
-        List<compra> compraList= new ArrayList<>();
+        String nombreProducto = "";
         double precio = 0;
         double total = 0;
         int cantidadComprada = 0;
         int codigo = 10000000;
+        List<objects> objectsList = new ArrayList<>();
+        List<compra> compraList= new ArrayList<>();
 
         // Read inventory
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
@@ -139,10 +114,12 @@ public class products {
             for (objects objects: objectsList) {
                 if (objects.getInventoryNumber()==codigo) {
                     precio = objects.getProductPrice();
+                    nombreProducto = objects.getProduct();
+                    cantidadComprada = 1;
+                    objects.setInventoryQuantity(cantidadComprada);
                 }
             }
-            cantidadComprada = 1;
-            compra compra = new compra(codigo, cantidadComprada, precio);
+            compra compra = new compra(nombreProducto,codigo, cantidadComprada, precio);
             compraList.add(compra);
             total = total + precio;
             cantidadComprada = 0;
@@ -150,7 +127,7 @@ public class products {
         } while (codigo > 0);
 
         for (compra compra : compraList) {
-            System.out.println(compra.getCodigo() + " " + compra.getInventoryQuantityCompra() + " " + compra.getProductPriceCompra());
+            System.out.println(compra.getNombreProduct() + "" + compra.getCodigo() + " " + compra.getInventoryQuantityCompra() + " " + compra.getProductPriceCompra());
         }
         System.out.println(total);
     }
