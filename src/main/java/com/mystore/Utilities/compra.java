@@ -8,6 +8,7 @@ public class compra {
 
     // Constuctor
     public compra(String nombreProduct,int codigo, int invetoryQuantityCompra, double productPriceCompra){
+        this.nombreProduct = nombreProduct;
         this.codigo = codigo;
         this.invetoryQuantityCompra = invetoryQuantityCompra;
         this.productPriceCompra = productPriceCompra;

@@ -54,7 +54,7 @@ public class products {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(" ");
-                String producString = parts[0].trim();
+                String producString = parts[0].toString();
                 int codeNumber = Integer.parseInt(parts[1].trim());
                 int inventory = Integer.parseInt(parts[2].trim());
                 double price = Double.parseDouble(parts[3].trim());
@@ -94,7 +94,7 @@ public class products {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(" ");
-                String producString = parts[0].trim();
+                String producString = parts[0].toString();
                 int codeNumber = Integer.parseInt(parts[1].trim());
                 int inventory = Integer.parseInt(parts[2].trim());
                 double price = Double.parseDouble(parts[3].trim());
@@ -119,7 +119,7 @@ public class products {
                     objects.setInventoryQuantity(cantidadComprada);
                 }
             }
-            compra compra = new compra(nombreProducto,codigo, cantidadComprada, precio);
+            compra compra = new compra(nombreProducto, codigo, cantidadComprada, precio);
             compraList.add(compra);
             total = total + precio;
             cantidadComprada = 0;
@@ -127,9 +127,9 @@ public class products {
         } while (codigo > 0);
 
         for (compra compra : compraList) {
-            System.out.println(compra.getNombreProduct() + "" + compra.getCodigo() + " " + compra.getInventoryQuantityCompra() + " " + compra.getProductPriceCompra());
+            System.out.println(compra.getNombreProduct() + " " + compra.getCodigo() + " " + compra.getInventoryQuantityCompra() + " " + compra.getProductPriceCompra());
         }
-        System.out.println(total);
+        System.out.println("total a pagar: " + total);
     }
     /*public static void createinventory(){
         objects.runList();
