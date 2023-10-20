@@ -1,11 +1,8 @@
 package com.mystore.Utilities;
-import java.util.LinkedList;
 import java.util.List;
 import java.io.*;
 import java.util.ArrayList;
-import com.mystore.Utilities.objects;
 import java.util.Scanner;
-import java.util.Collections;
 
 
 public class products {
@@ -82,11 +79,11 @@ public class products {
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
             String line;
             while ((line = br.readLine()) != null) {
-                String[] parts = line.split(",");
+                String[] parts = line.split(" ");
                 String producString = parts[0].trim();
                 int codeNumber = Integer.parseInt(parts[1].trim());
                 int inventory = Integer.parseInt(parts[2].trim());
-                double price = Integer.parseInt(parts[3].trim());
+                double price = Double.parseDouble(parts[3].trim());
 
                 objects objects = new objects(producString, codeNumber, inventory, price);
                 objectsList.add(objects);
@@ -100,8 +97,6 @@ public class products {
             System.out.println(objects);
         }
 
-        System.out.println("por favor ingrese el id del producto a visualizar");
-
         int inventoryNumberSearched = sc.nextInt();
         for (objects objects : productsList) {
             if(objects.getInventoryNumber() == inventoryNumberSearched){
@@ -109,8 +104,57 @@ public class products {
             }
         }
     }
+    public static void purchase(List<objects> productsList, Scanner sc) {
+        // Variable declaration
+        String path = "C:\\Users\\cadp9\\Documents\\GitHub\\store\\src\\main\\java\\com\\mystore\\Utilities\\inventory.txt";
+        List<objects> objectsList = new ArrayList<>();
+        List<compra> compraList= new ArrayList<>();
+        double precio = 0;
+        double total = 0;
+        int cantidadComprada = 0;
+        int codigo = 10000000;
+
+        // Read inventory
+        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(" ");
+                String producString = parts[0].trim();
+                int codeNumber = Integer.parseInt(parts[1].trim());
+                int inventory = Integer.parseInt(parts[2].trim());
+                double price = Double.parseDouble(parts[3].trim());
+
+                objects objects = new objects(producString, codeNumber, inventory, price);
+                objectsList.add(objects);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("ingrese los codigos de los productos");
+
+        // purchase method
+        do {
+            codigo = sc.nextInt();
+            for (objects objects: objectsList) {
+                if (objects.getInventoryNumber()==codigo) {
+                    precio = objects.getProductPrice();
+                }
+            }
+            cantidadComprada = 1;
+            compra compra = new compra(codigo, cantidadComprada, precio);
+            compraList.add(compra);
+            total = total + precio;
+            cantidadComprada = 0;
+            precio = 0;
+        } while (codigo > 0);
+
+        for (compra compra : compraList) {
+            System.out.println(compra.getCodigo() + " " + compra.getInventoryQuantityCompra() + " " + compra.getProductPriceCompra());
+        }
+        System.out.println(total);
+    }
     /*public static void createinventory(){
         objects.runList();
     }*/
 }
-
