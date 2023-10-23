@@ -76,7 +76,7 @@ public class App
                 products.removeProduct();
                 break;
             case 3:
-                products.updateProduct();
+                products.updateProduct(sc);
                 break;
             case 4:
                 products.purchase(pl, sc);

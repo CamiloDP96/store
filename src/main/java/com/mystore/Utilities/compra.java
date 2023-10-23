@@ -1,18 +1,23 @@
 package com.mystore.Utilities;
 
 public class compra {
+    String nombreProduct; //nombre de producto
     int codigo;//numero de inventario
     int invetoryQuantityCompra;//cantidad en inventario
     double productPriceCompra;//precio de producto
 
     // Constuctor
-    public compra(int codigo, int invetoryQuantityCompra, double productPriceCompra){
+    public compra(String nombreProduct,int codigo, int invetoryQuantityCompra, double productPriceCompra){
+        this.nombreProduct = nombreProduct;
         this.codigo = codigo;
         this.invetoryQuantityCompra = invetoryQuantityCompra;
         this.productPriceCompra = productPriceCompra;
     }
 
     // Getter
+    public String getNombreProduct(){
+        return nombreProduct;
+    }
     public int getCodigo(){
         return codigo;
     }
