@@ -66,8 +66,14 @@ public class products {
         //actualizar objeto
         System.out.println("ingrese el codigo del objeto a actualizar");
         codigo = sc.nextInt();
-        if (codigo == 0) {
-            System.out.println("");
+        for (objects objects: objectsList) {
+            if (objects.getInventoryNumber()==codigo) {
+                double newPrice = sc.nextDouble();
+                objects.setProductPrice(newPrice);
+                int inQ = sc.nextInt();
+                inQ = inQ * (-1);
+                objects.setInventoryQuantity(inQ);
+            }
         }
 
 
@@ -150,7 +156,7 @@ public class products {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
+
         System.out.println("ingrese los codigos de los productos");
 
         // purchase method
