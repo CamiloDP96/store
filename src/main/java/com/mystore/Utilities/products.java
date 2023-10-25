@@ -32,6 +32,7 @@ public class products {
             out.println(productsList);
         } catch (IOException e) {
         //exception handling left as an exercise for the reader newProduct + " " + newInventoryNumber + " " + newInvetoryQuantity + " " + newProductPrice
+            e.printStackTrace();
         }
         return productsList;
     }
@@ -93,6 +94,7 @@ public class products {
             out.println(objectsList);
         } catch (IOException e) {
         //exception handling left as an exercise for the reader newProduct + " " + newInventoryNumber + " " + newInvetoryQuantity + " " + newProductPrice
+            e.printStackTrace();
         }
         return;
     }
