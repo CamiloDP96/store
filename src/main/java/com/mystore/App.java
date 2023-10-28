@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 import com.mystore.Utilities.products;
 import com.mystore.Utilities.users;
+import com.mystore.Utilities.datenHour;
 import com.mystore.Utilities.objects;
 
 
@@ -41,6 +42,7 @@ public class App
     public static int displayMenu(Scanner sc, int x){
         int choise;
         List<objects> pl = new ArrayList<>();
+        datenHour.getDate();
         System.out.println(
             """
                 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢲⢄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀

@@ -181,6 +181,7 @@ public class products {
             precio = 0;
         } while (codigo > 0);
 
+        datenHour.getDate();
         for (compra compra : compraList) {
             System.out.println(compra.getNombreProduct() + " " + compra.getCodigo() + " " + compra.getInventoryQuantityCompra() + " " + compra.getProductPriceCompra());
         }
