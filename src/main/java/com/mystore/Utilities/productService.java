@@ -35,7 +35,7 @@ public class productService {
 
     //Remover producto
     public static void removeProduct(Scanner sc){
-        int codigo = 0;
+        int codigo = 0; //codigo del producto a buscar
 
         List<Product> objectsList = inventoryRW.readInventory();
 
