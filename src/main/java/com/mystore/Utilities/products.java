@@ -38,7 +38,6 @@ public class products {
         return productsList;
     }
 
-<<<<<<< Updated upstream
     public static void removeProduct(){ //no completado
 =======
     //borrar porducto
@@ -46,7 +45,6 @@ public class products {
     }
 
     //actualizar producto
->>>>>>> Stashed changes
     public static void updateProduct(Scanner sc){ //no completado
         String path = "C:\\Users\\cadp9\\Documents\\GitHub\\store\\src\\main\\java\\com\\mystore\\Utilities\\inventory.txt";
         List<objects> objectsList = new ArrayList<>();
