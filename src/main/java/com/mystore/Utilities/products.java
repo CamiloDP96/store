@@ -31,17 +31,65 @@ public class products {
         {
             out.println(productsList);
         } catch (IOException e) {
-        //exception handling left as an exercise for the reader newProduct + " " + newInventoryNumber + " " + newInvetoryQuantity + " " + newProductPrice
             e.printStackTrace();
         }
         return productsList;
     }
 
-    public static void removeProduct(){ //no completado
+    public static void removeProduct(Scanner sc){ //no completado
         //remover objeto a BD
         System.out.println("remover producto");
+        String path = "C:\\Users\\cadp9\\Documents\\GitHub\\store\\src\\main\\java\\com\\mystore\\Utilities\\inventory.txt";
+        List<objects> objectsList = new ArrayList<>();
+        int codigo = 0;
+
+        //actualizar objeto a BD
+        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(" ");
+                String producString = parts[0].toString();
+                int codeNumber = Integer.parseInt(parts[1].trim());
+                int inventory = Integer.parseInt(parts[2].trim());
+                double price = Double.parseDouble(parts[3].trim());
+
+                objects objects = new objects(producString, codeNumber, inventory, price);
+                objectsList.add(objects);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        //buscar y borrar objeto
+        System.out.println("ingrese el codigo del objeto a actualizar");
+        codigo = sc.nextInt();
+        for (objects objects: objectsList) {
+            if (objects.getInventoryNumber()==codigo) {
+                int index = objectsList.indexOf(objects);
+                objectsList.remove(index);
+            }
+        }
+
+        //overwrite inventory
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(path));
+            writer.write(""); // Overwrite the file with an empty string
+            writer.close();
+            System.out.println("Contents deleted successfully.");
+        } catch (IOException e) {
+            System.err.println("Error: " + e.getMessage());
+        }
+        try(FileWriter fw = new FileWriter(path, true);
+        BufferedWriter bw = new BufferedWriter(fw);
+        PrintWriter out = new PrintWriter(bw))
+        {
+            out.println(objectsList);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return;
     }
+
     public static void updateProduct(Scanner sc){ //no completado
         String path = "C:\\Users\\cadp9\\Documents\\GitHub\\store\\src\\main\\java\\com\\mystore\\Utilities\\inventory.txt";
         List<objects> objectsList = new ArrayList<>();
@@ -93,7 +141,6 @@ public class products {
         {
             out.println(objectsList);
         } catch (IOException e) {
-        //exception handling left as an exercise for the reader newProduct + " " + newInventoryNumber + " " + newInvetoryQuantity + " " + newProductPrice
             e.printStackTrace();
         }
         return;
