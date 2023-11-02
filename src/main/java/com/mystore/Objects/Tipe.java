@@ -1,7 +1,5 @@
 package com.mystore.Objects;
 
-import com.mystore.Objects.tags;
-
 public enum Tipe {
     Ambientadores(tags.ASEO_HOGAR),
     Blanqueadores(tags.ASEO_HOGAR),
@@ -100,9 +98,9 @@ public enum Tipe {
     Ron(tags.VINOS_Y_LICORES),
     Vinos(tags.VINOS_Y_LICORES),
     Vodka(tags.VINOS_Y_LICORES),
-    Whisky(tags.VINOS_Y_LICORES),
+    Whisky(tags.VINOS_Y_LICORES);
 
-    public tags Tags;
+    public final tags Tags;
 
     Tipe(tags Tags){
         this.Tags = Tags;

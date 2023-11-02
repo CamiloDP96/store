@@ -6,48 +6,50 @@ import java.util.Scanner;
 
 import com.mystore.Dao.inventoryRW;
 import com.mystore.Objects.Product;
-import com.mystore.Objects.compra;
+import com.mystore.Objects.ticket;
 
 public class purchaseProduct {
     public static void purchase(List<Product> productServiceList, Scanner sc) {
         // Variable declaration
-        String nombreProducto = "";
-        double precio = 0;
+        String nameProduct = "";
+        String descriptionP = "";
+        double price = 0;
         double total = 0;
         double IVA1 = 0;
-        int cantidadComprada = 0;
-        int codigo = 10000000;
+        int purchasedQuantity = 0;
+        int code = 10000000;
         List<Product> objectsList = new ArrayList<>();
-        List<compra> compraList= new ArrayList<>();
+        List<ticket> shoopList= new ArrayList<>();
 
         // Read inventory
         objectsList = inventoryRW.readInventory();
 
-        System.out.println("ingrese los codigos de los productos");
+        System.out.println("ingrese los codes de los productos");
 
         // purchase method
         do {
-            codigo = sc.nextInt();
+            code = sc.nextInt();
             for (Product Product: objectsList) {
-                if (Product.getInventoryNumber()==codigo) {
-                    precio = Product.getProductPrice();
-                    nombreProducto = Product.getProduct();
-                    cantidadComprada = 1;
-                    Product.setInventoryQuantity(cantidadComprada);
+                if (Product.getInventoryNumber()==code) {
+                    price = Product.getProductPrice();
+                    descriptionP = Product.getDescription();
+                    nameProduct = Product.getProduct();
+                    purchasedQuantity = 1;
+                    Product.setInventoryQuantity(purchasedQuantity);
                 }
             }
-            compra compra = new compra(nombreProducto, codigo, cantidadComprada, precio);
-            compraList.add(compra);
-            double iva = precio * 0.19;
+            ticket ticket = new ticket(nameProduct,descriptionP , code, purchasedQuantity, price);
+            shoopList.add(ticket);
+            double iva = price * 0.19;
             IVA1 = IVA1 + iva;
-            total = total + precio + iva;
-            cantidadComprada = 0;
-            precio = 0;
-        } while (codigo > 0);
+            total = total + price + iva;
+            purchasedQuantity = 0;
+            price = 0;
+        } while (code > 0);
 
         datenHour.getDate();
-        for (compra compra : compraList) {
-            System.out.println(compra.getNombreProduct() + " " + compra.getCodigo() + " " + compra.getInventoryQuantityCompra() + " " + compra.getProductPriceCompra());
+        for (ticket ticket : shoopList) {
+            System.out.println(ticket.getNombreProduct() + " " + ticket.getCode() + " " + ticket.getInventoryQuantityTicket() + " " + ticket.getProductPriceTicket());
         }
         System.out.println("IVA: " + IVA1);
         System.out.println("total a pagar: " + total);
