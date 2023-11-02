@@ -75,7 +75,7 @@ public class App
                 pl = products.addProduct(sc);
                 break;
             case 2:
-                products.removeProduct();
+                products.removeProduct(sc);
                 break;
             case 3:
                 products.updateProduct(sc);
