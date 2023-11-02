@@ -14,7 +14,9 @@ public class productService {
         String newProduct;//nombre del nuevo producto
         int newInventoryNumber;//codigo del nuevo producto de inventario
         int newInvetoryQuantity;//cantidad del nuevo producto en inventario
+        String newDescription;//descripcion del producto
         double newProductPrice;//precio de nuevo producto
+        String newImageProduct;//url de la imagen de referencia del nuevo producto
 
         //ingreso de las variables por consola
         System.out.println("ingrese el nombre del nuevo producto");
@@ -23,10 +25,14 @@ public class productService {
         newInventoryNumber = sc.nextInt();
         System.out.println("ingrese la cantidad a ingresar del nuevo producto");
         newInvetoryQuantity = sc.nextInt();
+        System.out.println("ingrese la descripcion de empaque del nuevo producto");
+        newDescription = sc.next();
         System.out.println("ingrese el precio de venta del nuevo producto");
         newProductPrice = sc.nextInt();
+        System.out.println("si posee la url de imagen de referencia del nuevo producto copiela y peguela acontinuacion");
+        newImageProduct = sc.next();
         List<Product> productServiceList = new ArrayList<>();
-        productServiceList.add(new Product(newProduct, newInventoryNumber, newInvetoryQuantity, newProductPrice));
+        productServiceList.add(new Product(newProduct, newInventoryNumber, newInvetoryQuantity, newDescription, newProductPrice, newImageProduct));
 
         inventoryRW.writeInventory(productServiceList);
 
