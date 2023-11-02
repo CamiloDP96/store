@@ -38,8 +38,6 @@ public class products {
         return productsList;
     }
 
-    public static void removeProduct(){ //no completado
-=======
     //borrar porducto
     public static void removeProduct(Scanner sc){ //no completado
     }
