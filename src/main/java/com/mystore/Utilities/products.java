@@ -29,7 +29,9 @@ public class products {
         BufferedWriter bw = new BufferedWriter(fw);
         PrintWriter out = new PrintWriter(bw))
         {
-            out.println(productsList);
+            for (objects objects : productsList) {
+                out.println(objects + " ");
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -83,7 +85,9 @@ public class products {
         BufferedWriter bw = new BufferedWriter(fw);
         PrintWriter out = new PrintWriter(bw))
         {
-            out.println(objectsList);
+            for (objects objects : objectsList) {
+                out.println(objects);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
