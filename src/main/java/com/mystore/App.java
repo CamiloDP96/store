@@ -16,24 +16,25 @@ public class App
 {
     public static void main( String[] args )
     {
-        int x = 0;
+        int x;
+        x = 0;
         Scanner sc = new Scanner(System.in);
         //boolean create = true;
         users admin = new users("admin", "admin123");
         System.out.println("ingrese usuaio y contraseña");
-        String user1 = sc.next();
-        String userpassword = sc.next();
-        if (user1.equals(admin.getUsername()) && userpassword.equals(admin.getPassword()) ) {
-            System.out.println("login completado");
-            do {
-                displayMenu(sc, x);
-            } while (x == 6);
-            if(sc!=null){
-                sc.close();
-            }
-        } else{
-            System.out.println("usuario o contraseña incorrectos");
-        }
+
+        do {
+            String user1 = sc.next();
+            String userpassword = sc.next();
+            if (user1.equals(admin.getUsername()) && userpassword.equals(admin.getPassword()) ) {
+                System.out.println("login completado");
+                do {
+                    x = displayMenu(sc, x);
+                } while (x < 6);
+                } else{
+                    System.out.println("usuario o contraseña incorrectos");
+                }
+            } while (x < 6);
         /*if (create == true) {
             products.createinventory();
         }*/

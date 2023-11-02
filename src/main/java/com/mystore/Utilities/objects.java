@@ -46,6 +46,6 @@ public class objects implements Serializable{
     }
     @Override
     public String toString() {
-        return "Product: " + product + ", codigo de referencia: " + inventoryNumber + ", cantidad en inventario: " + invetoryQuantity + ", precio de producto: " + productPrice;
+        return product + " " + inventoryNumber + " " + invetoryQuantity + " " + productPrice;
     }
 }

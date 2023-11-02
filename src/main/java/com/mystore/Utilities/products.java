@@ -4,8 +4,9 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
 public class products {
+
+    //añadir producto
     public static List<objects> addProduct(Scanner sc) {
         //agregar objeto a BD
         String path = "C:\\Users\\cadp9\\Documents\\GitHub\\store\\src\\main\\java\\com\\mystore\\Utilities\\inventory.txt";
@@ -29,7 +30,7 @@ public class products {
         BufferedWriter bw = new BufferedWriter(fw);
         PrintWriter out = new PrintWriter(bw))
         {
-            out.println(productsList);
+            out.println("\n" + productsList);
         } catch (IOException e) {
         //exception handling left as an exercise for the reader newProduct + " " + newInventoryNumber + " " + newInvetoryQuantity + " " + newProductPrice
             e.printStackTrace();
@@ -37,11 +38,15 @@ public class products {
         return productsList;
     }
 
+<<<<<<< Updated upstream
     public static void removeProduct(){ //no completado
-        //remover objeto a BD
-        System.out.println("remover producto");
-        return;
+=======
+    //borrar porducto
+    public static void removeProduct(Scanner sc){ //no completado
     }
+
+    //actualizar producto
+>>>>>>> Stashed changes
     public static void updateProduct(Scanner sc){ //no completado
         String path = "C:\\Users\\cadp9\\Documents\\GitHub\\store\\src\\main\\java\\com\\mystore\\Utilities\\inventory.txt";
         List<objects> objectsList = new ArrayList<>();
@@ -70,13 +75,14 @@ public class products {
         for (objects objects: objectsList) {
             if (objects.getInventoryNumber()==codigo) {
                 double newPrice = sc.nextDouble();
+                System.out.println("ingrese el nuevo precio del producto");
                 objects.setProductPrice(newPrice);
+                System.out.println("ingrese la cantidad de producto a ingresar");
                 int inQ = sc.nextInt();
                 inQ = inQ * (-1);
                 objects.setInventoryQuantity(inQ);
             }
         }
-
 
         //overwrite inventory
         try {
@@ -91,14 +97,19 @@ public class products {
         BufferedWriter bw = new BufferedWriter(fw);
         PrintWriter out = new PrintWriter(bw))
         {
-            out.println(objectsList);
+            for (objects objects : objectsList) {
+                out.println(objects);
+            }
         } catch (IOException e) {
         //exception handling left as an exercise for the reader newProduct + " " + newInventoryNumber + " " + newInvetoryQuantity + " " + newProductPrice
             e.printStackTrace();
         }
         return;
     }
+
+    //imprimir inventario
     public static void printInventory (List<objects> productsList, Scanner sc){
+        int x = 5;
         String path = "C:\\Users\\cadp9\\Documents\\GitHub\\store\\src\\main\\java\\com\\mystore\\Utilities\\inventory.txt";
         List<objects> objectsList = new ArrayList<>();
 
@@ -129,7 +140,10 @@ public class products {
                 System.out.println("Producto{" + objects.getProduct() + ", codigo " + objects.getInventoryNumber() + ", cantidad en inventario" + objects.getInventoryQuantity() + ", precio " + objects.getProductPrice() + "}");
             }
         }
+        return;
     }
+
+    //compra
     public static void purchase(List<objects> productsList, Scanner sc) {
         // Variable declaration
         String path = "C:\\Users\\cadp9\\Documents\\GitHub\\store\\src\\main\\java\\com\\mystore\\Utilities\\inventory.txt";
@@ -186,6 +200,7 @@ public class products {
         }
         System.out.println("IVA: " + IVA1);
         System.out.println("total a pagar: " + total);
+        return;
     }
     /*public static void createinventory(){
         objects.runList();

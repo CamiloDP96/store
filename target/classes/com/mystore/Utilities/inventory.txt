@@ -19,3 +19,4 @@ Lechuga 18 5 3152.0
 Yogurtfrutas 19 6 1322.0
 Detergente 20 15 8235.0
 Panbimbo 21 50 8035.0
+dulces 22 70 300.0
