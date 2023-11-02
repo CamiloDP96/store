@@ -30,11 +30,11 @@ public class App
                 System.out.println("login completado");
                 do {
                     x = displayMenu(sc, x);
-                } while (x < 6);
+                } while (x < 7);
             } else{
                 System.out.println("usuario o contraseña incorrectos");
             }
-        } while (x < 6);
+        } while (x < 7);
         /*if (create == true) {
             productService.createinventory();
         }*/
@@ -67,8 +67,7 @@ public class App
             ⠀⠀⠀⠀⠀⢠⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⠉⠁⠀⠀⠀⠀
             ⠀⠀⠀⠀⠀⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇"""
                 );
-        System.out.println("___________________________________________\n"+"Administrador Mi Tienda\n" + "___________________________________________\n" + "1. Agregar a inventario\n" + "2. Remover de inventario\n" + "3. actualizar producto de inventario\n" + "4. Realizar compra\n" + "5. Ver inventario\n" + "6. Cerrar menu");
-        choise = sc.nextInt();
+        System.out.println("___________________________________________\n"+"Administrador Mi Tienda\n" + "___________________________________________\n" + "1. Agregar a inventario\n" + "2. Remover de inventario\n" + "3. actualizar producto de inventario\n" + "4. Realizar compra\n" + "5. Ver inventario\n" + "6. Buscar producto" + "7. Cerrar menu");        choise = sc.nextInt();
         x = choise;
         switch (choise) {
             case 1:
@@ -87,6 +86,9 @@ public class App
                 productService.printInventory(pl, sc);
                 break;
             case 6:
+                productService.searchProduct(sc);
+                break;
+            case 7:
                 killProgram();
                 break;
             default:

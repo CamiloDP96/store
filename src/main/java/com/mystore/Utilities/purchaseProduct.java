@@ -24,7 +24,7 @@ public class purchaseProduct {
         // Read inventory
         objectsList = inventoryRW.readInventory();
 
-        System.out.println("ingrese los codes de los productos");
+        System.out.println("ingrese el codigo de los productos a comprar");
 
         // purchase method
         do {

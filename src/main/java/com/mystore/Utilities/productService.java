@@ -110,4 +110,18 @@ public class productService {
             }
         }*/
     }
+
+    public static void searchProduct(Scanner sc) {
+        int code = 10000000;
+        List<Product> objectsList = new ArrayList<>();
+        objectsList = inventoryRW.readInventory();
+        System.out.println("ingrese el codigo del producto a buscar");
+
+        code = sc.nextInt();
+            for (Product Product: objectsList) {
+                if (Product.getInventoryNumber()==code) {
+                    System.out.println(Product);
+                }
+            }
+    }
 }
