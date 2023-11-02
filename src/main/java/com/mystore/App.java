@@ -3,10 +3,10 @@ package com.mystore;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import com.mystore.Utilities.products;
+import com.mystore.Utilities.productService;
 import com.mystore.Utilities.users;
 import com.mystore.Utilities.datenHour;
-import com.mystore.Utilities.objects;
+import com.mystore.Utilities.Product;
 
 
 /**
@@ -35,12 +35,12 @@ public class App
             }
         } while (x < 6);
         /*if (create == true) {
-            products.createinventory();
+            productService.createinventory();
         }*/
     }
     public static int displayMenu(Scanner sc, int x){
         int choise;
-        List<objects> pl = new ArrayList<>();
+        List<Product> pl = new ArrayList<>();
         datenHour.getDate();
         System.out.println(
             """
@@ -71,19 +71,19 @@ public class App
         x = choise;
         switch (choise) {
             case 1:
-                pl = products.addProduct(sc);
+                pl = productService.addProduct(sc);
                 break;
             case 2:
-                products.removeProduct(sc);
+                productService.removeProduct(sc);
                 break;
             case 3:
-                products.updateProduct(sc);
+                productService.updateProduct(sc);
                 break;
             case 4:
-                products.purchase(pl, sc);
+                productService.purchase(pl, sc);
                 break;
             case 5:
-                products.printInventory(pl, sc);
+                productService.printInventory(pl, sc);
                 break;
             case 6:
                 killProgram();

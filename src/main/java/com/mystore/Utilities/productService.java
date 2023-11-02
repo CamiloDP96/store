@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
-public class products {
-    public static List<objects> addProduct(Scanner sc) {
+public class productService {
+    public static List<Product> addProduct(Scanner sc) {
         //agregar objeto a BD
         String path = "C:\\Users\\cadp9\\Documents\\GitHub\\store\\src\\main\\java\\com\\mystore\\Utilities\\inventory.txt";
         String newProduct;//nombre del nuevo producto
@@ -22,27 +22,27 @@ public class products {
         newInvetoryQuantity = sc.nextInt();
         System.out.println("ingrese el precio de venta del nuevo producto");
         newProductPrice = sc.nextInt();
-        List<objects> productsList = new ArrayList<>();
-        productsList.add(new objects(newProduct, newInventoryNumber, newInvetoryQuantity, newProductPrice));
+        List<Product> productServiceList = new ArrayList<>();
+        productServiceList.add(new Product(newProduct, newInventoryNumber, newInvetoryQuantity, newProductPrice));
 
         try(FileWriter fw = new FileWriter(path, true);
         BufferedWriter bw = new BufferedWriter(fw);
         PrintWriter out = new PrintWriter(bw))
         {
-            for (objects objects : productsList) {
-                out.println(objects + " ");
+            for (Product Product : productServiceList) {
+                out.println(Product + " ");
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return productsList;
+        return productServiceList;
     }
 
     public static void removeProduct(Scanner sc){ //no completado
         //remover objeto a BD
         System.out.println("remover producto");
         String path = "C:\\Users\\cadp9\\Documents\\GitHub\\store\\src\\main\\java\\com\\mystore\\Utilities\\inventory.txt";
-        List<objects> objectsList = new ArrayList<>();
+        List<Product> objectsList = new ArrayList<>();
         int codigo = 0;
 
         //actualizar objeto a BD
@@ -55,8 +55,8 @@ public class products {
                 int inventory = Integer.parseInt(parts[2].trim());
                 double price = Double.parseDouble(parts[3].trim());
 
-                objects objects = new objects(producString, codeNumber, inventory, price);
-                objectsList.add(objects);
+                Product Product = new Product(producString, codeNumber, inventory, price);
+                objectsList.add(Product);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -65,9 +65,9 @@ public class products {
         //buscar y borrar objeto
         System.out.println("ingrese el codigo del objeto a actualizar");
         codigo = sc.nextInt();
-        for (objects objects: objectsList) {
-            if (objects.getInventoryNumber()==codigo) {
-                int index = objectsList.indexOf(objects);
+        for (Product Product: objectsList) {
+            if (Product.getInventoryNumber()==codigo) {
+                int index = objectsList.indexOf(Product);
                 objectsList.remove(index);
             }
         }
@@ -85,8 +85,8 @@ public class products {
         BufferedWriter bw = new BufferedWriter(fw);
         PrintWriter out = new PrintWriter(bw))
         {
-            for (objects objects : objectsList) {
-                out.println(objects);
+            for (Product Product : objectsList) {
+                out.println(Product);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -96,7 +96,7 @@ public class products {
 
     public static void updateProduct(Scanner sc){ //no completado
         String path = "C:\\Users\\cadp9\\Documents\\GitHub\\store\\src\\main\\java\\com\\mystore\\Utilities\\inventory.txt";
-        List<objects> objectsList = new ArrayList<>();
+        List<Product> objectsList = new ArrayList<>();
         int codigo = 0;
 
         //actualizar objeto a BD
@@ -109,8 +109,8 @@ public class products {
                 int inventory = Integer.parseInt(parts[2].trim());
                 double price = Double.parseDouble(parts[3].trim());
 
-                objects objects = new objects(producString, codeNumber, inventory, price);
-                objectsList.add(objects);
+                Product Product = new Product(producString, codeNumber, inventory, price);
+                objectsList.add(Product);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -119,13 +119,13 @@ public class products {
         //actualizar objeto
         System.out.println("ingrese el codigo del objeto a actualizar");
         codigo = sc.nextInt();
-        for (objects objects: objectsList) {
-            if (objects.getInventoryNumber()==codigo) {
+        for (Product Product: objectsList) {
+            if (Product.getInventoryNumber()==codigo) {
                 double newPrice = sc.nextDouble();
-                objects.setProductPrice(newPrice);
+                Product.setProductPrice(newPrice);
                 int inQ = sc.nextInt();
                 inQ = inQ * (-1);
-                objects.setInventoryQuantity(inQ);
+                Product.setInventoryQuantity(inQ);
             }
         }
 
@@ -149,9 +149,9 @@ public class products {
         }
         return;
     }
-    public static void printInventory (List<objects> productsList, Scanner sc){
+    public static void printInventory (List<Product> productServiceList, Scanner sc){
         String path = "C:\\Users\\cadp9\\Documents\\GitHub\\store\\src\\main\\java\\com\\mystore\\Utilities\\inventory.txt";
-        List<objects> objectsList = new ArrayList<>();
+        List<Product> objectsList = new ArrayList<>();
 
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
             String line;
@@ -162,26 +162,26 @@ public class products {
                 int inventory = Integer.parseInt(parts[2].trim());
                 double price = Double.parseDouble(parts[3].trim());
 
-                objects objects = new objects(producString, codeNumber, inventory, price);
-                objectsList.add(objects);
+                Product Product = new Product(producString, codeNumber, inventory, price);
+                objectsList.add(Product);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        // Print the list of objects objects
-        for (objects objects : objectsList) {
-            System.out.println(objects);
+        // Print the list of Product Product
+        for (Product Product : objectsList) {
+            System.out.println(Product);
         }
 
         int inventoryNumberSearched = sc.nextInt();
-        for (objects objects : productsList) {
-            if(objects.getInventoryNumber() == inventoryNumberSearched){
-                System.out.println("Producto{" + objects.getProduct() + ", codigo " + objects.getInventoryNumber() + ", cantidad en inventario" + objects.getInventoryQuantity() + ", precio " + objects.getProductPrice() + "}");
+        for (Product Product : productServiceList) {
+            if(Product.getInventoryNumber() == inventoryNumberSearched){
+                System.out.println("Producto{" + Product.getProduct() + ", codigo " + Product.getInventoryNumber() + ", cantidad en inventario" + Product.getInventoryQuantity() + ", precio " + Product.getProductPrice() + "}");
             }
         }
     }
-    public static void purchase(List<objects> productsList, Scanner sc) {
+    public static void purchase(List<Product> productServiceList, Scanner sc) {
         // Variable declaration
         String path = "C:\\Users\\cadp9\\Documents\\GitHub\\store\\src\\main\\java\\com\\mystore\\Utilities\\inventory.txt";
         String nombreProducto = "";
@@ -190,7 +190,7 @@ public class products {
         double IVA1 = 0;
         int cantidadComprada = 0;
         int codigo = 10000000;
-        List<objects> objectsList = new ArrayList<>();
+        List<Product> objectsList = new ArrayList<>();
         List<compra> compraList= new ArrayList<>();
 
         // Read inventory
@@ -203,8 +203,8 @@ public class products {
                 int inventory = Integer.parseInt(parts[2].trim());
                 double price = Double.parseDouble(parts[3].trim());
 
-                objects objects = new objects(producString, codeNumber, inventory, price);
-                objectsList.add(objects);
+                Product Product = new Product(producString, codeNumber, inventory, price);
+                objectsList.add(Product);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -215,12 +215,12 @@ public class products {
         // purchase method
         do {
             codigo = sc.nextInt();
-            for (objects objects: objectsList) {
-                if (objects.getInventoryNumber()==codigo) {
-                    precio = objects.getProductPrice();
-                    nombreProducto = objects.getProduct();
+            for (Product Product: objectsList) {
+                if (Product.getInventoryNumber()==codigo) {
+                    precio = Product.getProductPrice();
+                    nombreProducto = Product.getProduct();
                     cantidadComprada = 1;
-                    objects.setInventoryQuantity(cantidadComprada);
+                    Product.setInventoryQuantity(cantidadComprada);
                 }
             }
             compra compra = new compra(nombreProducto, codigo, cantidadComprada, precio);
@@ -240,6 +240,6 @@ public class products {
         System.out.println("total a pagar: " + total);
     }
     /*public static void createinventory(){
-        objects.runList();
+        Product.runList();
     }*/
 }
