@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import com.mystore.Utilities.productService;
-import com.mystore.Utilities.users;
+import com.mystore.Utilities.purchaseProduct;
+import com.mystore.Objects.Product;
+import com.mystore.Objects.users;
 import com.mystore.Utilities.datenHour;
-import com.mystore.Utilities.Product;
 
 
 /**
@@ -80,7 +81,7 @@ public class App
                 productService.updateProduct(sc);
                 break;
             case 4:
-                productService.purchase(pl, sc);
+                purchaseProduct.purchase(pl, sc);
                 break;
             case 5:
                 productService.printInventory(pl, sc);

@@ -1,4 +1,4 @@
-package com.mystore.Utilities;
+package com.mystore.Objects;
 
 public class users {
     private String username;
