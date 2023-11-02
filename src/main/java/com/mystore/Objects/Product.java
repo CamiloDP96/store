@@ -1,24 +1,22 @@
-package com.mystore.Utilities;
+package com.mystore.Objects;
 
 import java.io.Serializable;
 
 
-public class objects implements Serializable{
+public class Product implements Serializable{
 
     // Contructor
     private static final long serialVersionUID = 1L;
-    public static objects Objects;
-    String product;//nombre del producto
+    public static Product Objects;
+    String Product;//nombre del Producto
     int inventoryNumber;//numero de inventario
     int invetoryQuantity;//cantidad en inventario
-    double productPrice;//precio de producto
-    //public List<objects> objectsList = new ArrayList<>();
-    //product, inventoryNumber, invetoryQuantity, productPrice
-    public objects(String product, int inventoryNumber, int invetoryQuantity, double productPrice){
-        this.product = product;
+    double ProductPrice;//precio de Producto
+    public Product(String Product, int inventoryNumber, int invetoryQuantity, double ProductPrice){
+        this.Product = Product;
         this.inventoryNumber = inventoryNumber;
         this.invetoryQuantity= invetoryQuantity;
-        this.productPrice = productPrice;
+        this.ProductPrice = ProductPrice;
     }
 
     // Setter
@@ -27,13 +25,13 @@ public class objects implements Serializable{
         return this.invetoryQuantity;
     }
     public double setProductPrice(double newProductPrice){
-        this.productPrice = newProductPrice;
-        return this.productPrice;
+        this.ProductPrice = newProductPrice;
+        return this.ProductPrice;
     }
 
     // Getter
     public String getProduct(){
-        return product;
+        return Product;
     }
     public int getInventoryNumber(){
         return inventoryNumber;
@@ -42,10 +40,10 @@ public class objects implements Serializable{
         return invetoryQuantity;
     }
     public double getProductPrice(){
-        return productPrice;
+        return ProductPrice;
     }
     @Override
     public String toString() {
-        return "Product: " + product + ", codigo de referencia: " + inventoryNumber + ", cantidad en inventario: " + invetoryQuantity + ", precio de producto: " + productPrice;
+        return Product + " " + inventoryNumber + " " + invetoryQuantity + " " + ProductPrice;
     }
 }

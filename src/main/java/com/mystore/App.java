@@ -3,10 +3,11 @@ package com.mystore;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import com.mystore.Utilities.products;
-import com.mystore.Utilities.users;
+import com.mystore.Utilities.productService;
+import com.mystore.Utilities.purchaseProduct;
+import com.mystore.Objects.Product;
+import com.mystore.Objects.users;
 import com.mystore.Utilities.datenHour;
-import com.mystore.Utilities.objects;
 
 
 /**
@@ -22,26 +23,25 @@ public class App
         //boolean create = true;
         users admin = new users("admin", "admin123");
         System.out.println("ingrese usuaio y contraseña");
-        String user1 = sc.next();
-        String userpassword = sc.next();
-        if (user1.equals(admin.getUsername()) && userpassword.equals(admin.getPassword()) ) {
-            System.out.println("login completado");
-            do {
-                displayMenu(sc, x);
-            } while (x == 6);
-            if(sc!=null){
-                sc.close();
+        do {
+            String user1 = sc.next();
+            String userpassword = sc.next();
+            if (user1.equals(admin.getUsername()) && userpassword.equals(admin.getPassword()) ) {
+                System.out.println("login completado");
+                do {
+                    x = displayMenu(sc, x);
+                } while (x < 6);
+            } else{
+                System.out.println("usuario o contraseña incorrectos");
             }
-        } else{
-            System.out.println("usuario o contraseña incorrectos");
-        }
+        } while (x < 6);
         /*if (create == true) {
-            products.createinventory();
+            productService.createinventory();
         }*/
     }
     public static int displayMenu(Scanner sc, int x){
         int choise;
-        List<objects> pl = new ArrayList<>();
+        List<Product> pl = new ArrayList<>();
         datenHour.getDate();
         System.out.println(
             """
@@ -72,19 +72,19 @@ public class App
         x = choise;
         switch (choise) {
             case 1:
-                pl = products.addProduct(sc);
+                pl = productService.addProduct(sc);
                 break;
             case 2:
-                products.removeProduct(sc);
+                productService.removeProduct(sc);
                 break;
             case 3:
-                products.updateProduct(sc);
+                productService.updateProduct(sc);
                 break;
             case 4:
-                products.purchase(pl, sc);
+                purchaseProduct.purchase(pl, sc);
                 break;
             case 5:
-                products.printInventory(pl, sc);
+                productService.printInventory(pl, sc);
                 break;
             case 6:
                 killProgram();

@@ -1,4 +1,4 @@
-package com.mystore.Utilities;
+package com.mystore.Objects;
 
 public class compra {
     String nombreProduct; //nombre de producto
