@@ -7,7 +7,7 @@ import com.mystore.Objects.Product;
 
 public class displayMenu {
 
-public static int displayMenu(Scanner sc, int x){
+public static int displayMenuMethod(Scanner sc, int x){
         int choise;
         List<Product> pl = new ArrayList<>();
         datenHour.getDate();

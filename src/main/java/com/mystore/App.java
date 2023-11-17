@@ -24,7 +24,7 @@ public class App
             if (user1.equals(admin.getUsername()) && userpassword.equals(admin.getPassword()) ) {
                 System.out.println("login completado");
                 do {
-                    x = displayMenu.displayMenu(sc, x);
+                    x = displayMenu.displayMenuMethod(sc, x);
                 } while (x < 7);
             } else{
                 System.out.println("usuario o contraseña incorrectos");
