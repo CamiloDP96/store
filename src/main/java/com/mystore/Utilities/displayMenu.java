@@ -5,12 +5,12 @@ import java.util.List;
 import java.util.Scanner;
 import com.mystore.Objects.Product;
 
-public class displayMenu {
+public class DisplayMenu {
 
 public static int displayMenuMethod(Scanner sc, int x){
         int choise;
         List<Product> pl = new ArrayList<>();
-        datenHour.getDate();
+        DatenHour.getDate();
         System.out.println(
             """
                 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢲⢄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -40,22 +40,22 @@ public static int displayMenuMethod(Scanner sc, int x){
         x = choise;
         switch (choise) {
             case 1:
-                pl = productService.addProduct(sc);
+                pl = ProductService.addProduct(sc);
                 break;
             case 2:
-                productService.removeProduct(sc);
+                ProductService.removeProduct(sc);
                 break;
             case 3:
-                productService.updateProduct(sc);
+                ProductService.updateProduct(sc);
                 break;
             case 4:
-                purchaseProduct.purchase(pl, sc);
+                PurchaseProduct.purchase(pl, sc);
                 break;
             case 5:
-                productService.printInventory(pl, sc);
+                ProductService.printInventory(pl, sc);
                 break;
             case 6:
-                productService.searchProduct(sc);
+                ProductService.searchProduct(sc);
                 break;
             case 7:
                 killProgram();

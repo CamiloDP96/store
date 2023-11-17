@@ -1,11 +1,11 @@
 package com.mystore.Objects;
 
-public class users {
+public class Users {
     private String username;
     private String password;
 
     // Constructor
-    public users(String username, String password) {
+    public Users(String username, String password) {
         this.username = username; //usuario
         this.password = password; //contraseña
     }

@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import com.mystore.Dao.inventoryRW;
+import com.mystore.Dao.InventoryRW;
 import com.mystore.Objects.Product;
-import com.mystore.Objects.ticket;
+import com.mystore.Objects.Ticket;
 
-public class purchaseProduct {
+public class PurchaseProduct {
     public static void purchase(List<Product> productServiceList, Scanner sc) {
         // Variable declaration
         String nameProduct = "";
@@ -19,10 +19,10 @@ public class purchaseProduct {
         int purchasedQuantity = 0;
         int code = 10000000;
         List<Product> objectsList = new ArrayList<>();
-        List<ticket> shoopList= new ArrayList<>();
+        List<Ticket> shoopList= new ArrayList<>();
 
         // Read inventory
-        objectsList = inventoryRW.readInventory();
+        objectsList = InventoryRW.readInventory();
 
         System.out.println("ingrese el codigo de los productos a comprar");
 
@@ -38,7 +38,7 @@ public class purchaseProduct {
                     Product.setInventoryQuantity(purchasedQuantity);
                 }
             }
-            ticket ticket = new ticket(nameProduct,descriptionP , code, purchasedQuantity, price);
+            Ticket ticket = new Ticket(nameProduct,descriptionP , code, purchasedQuantity, price);
             shoopList.add(ticket);
             double iva = price * 0.19;
             IVA1 = IVA1 + iva;
@@ -47,9 +47,9 @@ public class purchaseProduct {
             price = 0;
         } while (code > 0);
 
-        datenHour.getDate();
-        for (ticket ticket : shoopList) {
-            System.out.println(ticket.getNombreProduct() + " " + ticket.getCode() + " " + ticket.getInventoryQuantityTicket() + " " + ticket.getProductPriceTicket());
+        DatenHour.getDate();
+        for (Ticket ticket : shoopList) {
+            System.out.printf("%-20s %10s %5d%n",ticket.getNombreProduct() + " " + ticket.getCode() + " " + ticket.getInventoryQuantityTicket() + " " + ticket.getProductPriceTicket());
         }
         System.out.println("IVA: " + IVA1);
         System.out.println("total a pagar: " + total);

@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 import com.mystore.Objects.Product;
 
-public class inventoryRW {
+public class InventoryRW {
     public static void writeInventory (List<Product> productList) {
         String path = "C:\\Users\\cadp9\\Documents\\GitHub\\store\\src\\main\\java\\com\\mystore\\Dao\\inventory.csv";
         List<Product> productServiceList = productList;

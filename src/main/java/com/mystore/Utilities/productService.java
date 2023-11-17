@@ -3,11 +3,11 @@ package com.mystore.Utilities;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
-import com.mystore.Dao.inventoryRW;
+import com.mystore.Dao.InventoryRW;
 import com.mystore.Objects.Product;
 
 
-public class productService {
+public class ProductService {
     //añadir producto
     public static List<Product> addProduct(Scanner sc) {
         //agregar objeto a BD
@@ -34,7 +34,7 @@ public class productService {
         List<Product> productServiceList = new ArrayList<>();
         productServiceList.add(new Product(newProduct, newInventoryNumber, newInvetoryQuantity, newDescription, newProductPrice, newImageProduct));
 
-        inventoryRW.writeInventory(productServiceList);
+        InventoryRW.writeInventory(productServiceList);
 
         return productServiceList;
     }
@@ -43,7 +43,7 @@ public class productService {
     public static void removeProduct(Scanner sc){
         int codigo = 0; //codigo del producto a buscar
 
-        List<Product> objectsList = inventoryRW.readInventory();
+        List<Product> objectsList = InventoryRW.readInventory();
 
         //buscar y borrar objeto
         System.out.println("ingrese el codigo del objeto a actualizar");
@@ -56,9 +56,9 @@ public class productService {
         }
 
         //overwrite inventory
-        inventoryRW.deleteInventory();
+        InventoryRW.deleteInventory();
 
-        inventoryRW.writeInventory(objectsList);
+        InventoryRW.writeInventory(objectsList);
 
         return;
     }
@@ -68,7 +68,7 @@ public class productService {
         List<Product> objectsList = new ArrayList<>();
         int codigo = 0;
 
-        objectsList = inventoryRW.readInventory();
+        objectsList = InventoryRW.readInventory();
 
         //actualizar objeto
         System.out.println("ingrese el codigo del objeto a actualizar");
@@ -84,9 +84,9 @@ public class productService {
         }
 
         //overwrite inventory
-        inventoryRW.deleteInventory();
+        InventoryRW.deleteInventory();
 
-        inventoryRW.writeInventory(objectsList);
+        InventoryRW.writeInventory(objectsList);
 
         return;
     }
@@ -95,11 +95,12 @@ public class productService {
     public static void printInventory (List<Product> productServiceList, Scanner sc){
         List<Product> objectsList = new ArrayList<>();
 
-        objectsList = inventoryRW.readInventory();
+        objectsList = InventoryRW.readInventory();
 
         // imprimir el inventario de productos
         for (Product Product : objectsList) {
-            System.out.println(Product);
+            System.out.printf("%-20s %10s %5d%n",Product);
+
         }
 
         /*
@@ -114,13 +115,13 @@ public class productService {
     public static void searchProduct(Scanner sc) {
         int code = 10000000;
         List<Product> objectsList = new ArrayList<>();
-        objectsList = inventoryRW.readInventory();
+        objectsList = InventoryRW.readInventory();
         System.out.println("ingrese el codigo del producto a buscar");
 
         code = sc.nextInt();
             for (Product Product: objectsList) {
                 if (Product.getInventoryNumber()==code) {
-                    System.out.println(Product);
+                    System.out.printf("%-20s %10s %5d%n",Product);
                 }
             }
     }

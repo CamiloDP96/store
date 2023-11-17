@@ -3,7 +3,7 @@ package com.mystore.Utilities;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class datenHour {
+public class DatenHour {
     public static void getDate() {
         LocalDateTime ahora = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
