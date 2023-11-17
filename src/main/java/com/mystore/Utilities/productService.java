@@ -99,7 +99,7 @@ public class ProductService {
 
         // imprimir el inventario de productos
         for (Product Product : objectsList) {
-            System.out.printf("%-20s %10s %5d%n",Product);
+            System.out.println(Product);
 
         }
 
@@ -121,7 +121,7 @@ public class ProductService {
         code = sc.nextInt();
             for (Product Product: objectsList) {
                 if (Product.getInventoryNumber()==code) {
-                    System.out.printf("%-20s %10s %5d%n",Product);
+                    System.out.println(Product);
                 }
             }
     }

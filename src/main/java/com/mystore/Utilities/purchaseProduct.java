@@ -49,7 +49,7 @@ public class PurchaseProduct {
 
         DatenHour.getDate();
         for (Ticket ticket : shoopList) {
-            System.out.printf("%-20s %10s %5d%n",ticket.getNombreProduct() + " " + ticket.getCode() + " " + ticket.getInventoryQuantityTicket() + " " + ticket.getProductPriceTicket());
+            System.out.println(ticket.getNombreProduct() + " " + ticket.getCode() + " " + ticket.getInventoryQuantityTicket() + " " + ticket.getProductPriceTicket());
         }
         System.out.println("IVA: " + IVA1);
         System.out.println("total a pagar: " + total);

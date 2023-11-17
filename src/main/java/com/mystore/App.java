@@ -1,8 +1,8 @@
 package com.mystore;
 
 import java.util.Scanner;
-import com.mystore.Objects.users;
-import com.mystore.Utilities.displayMenu;
+import com.mystore.Objects.Users;
+import com.mystore.Utilities.DisplayMenu;
 
 
 /**
@@ -16,7 +16,7 @@ public class App
         int x = 0;
         Scanner sc = new Scanner(System.in);
         //boolean create = true;
-        users admin = new users("admin", "admin123");
+        Users admin = new Users("admin", "admin123");
         System.out.println("ingrese usuaio y contraseña");
         do {
             String user1 = sc.next();
@@ -24,7 +24,7 @@ public class App
             if (user1.equals(admin.getUsername()) && userpassword.equals(admin.getPassword()) ) {
                 System.out.println("login completado");
                 do {
-                    x = displayMenu.displayMenuMethod(sc, x);
+                    x = DisplayMenu.displayMenuMethod(sc, x);
                 } while (x < 7);
             } else{
                 System.out.println("usuario o contraseña incorrectos");
