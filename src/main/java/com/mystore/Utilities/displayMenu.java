@@ -1,5 +1,6 @@
 package com.mystore.Utilities;
 
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -7,7 +8,7 @@ import com.mystore.Objects.Product;
 
 public class DisplayMenu {
 
-public static int displayMenuMethod(Scanner sc, int x){
+public static int displayMenuMethod(Scanner sc, int x, Connection connection){
         int choise;
         List<Product> pl = new ArrayList<>();
         DatenHour.getDate();
